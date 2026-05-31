@@ -8,3 +8,6 @@ class GenreModel(BaseModel):
     class Meta:
         app_label = 'core'
         db_table = 'genres'
+
+    def __str__(self):
+        return self.name

@@ -16,3 +16,6 @@ class MangaModel(BaseModel):
     class Meta:
         app_label = 'core'
         db_table = 'mangas'
+
+    def __str__(self):
+        return self.title

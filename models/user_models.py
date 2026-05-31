@@ -56,18 +56,18 @@ class UserModel(AbstractBaseUser, PermissionsMixin, BaseModel):
             self.slug = slugify(self.username)
         super().save(*args, **kwargs)
 
-    def has_permission(self, perm_codename):
-        if self.is_superuser:
-            return True
-        return (
-            self.role and self.role.permissions.filter(codename=perm_codename).exists()
-        )
+    # def has_permission(self, perm_codename):
+    #     if self.is_superuser:
+    #         return True
+    #     return (
+    #         self.role and self.role.permissions.filter(codename=perm_codename).exists()
+    #     )
 
-    def has_module_perms(self, app_label):
-        return (
-            self.role
-            and self.role.permissions.filter(content_type__app_label=app_label).exists()
-        )
+    # def has_module_perms(self, app_label):
+    #     return (
+    #         self.role
+    #         and self.role.permissions.filter(content_type__app_label=app_label).exists()
+    #     )
 
     def get_all_permission_ids(self):
         role_perms = set()
